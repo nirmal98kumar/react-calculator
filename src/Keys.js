@@ -3,33 +3,33 @@ import React from "react";
 const numbers = ['1','2','3','4']
 const operators = ['+','-','*','/','=']
 
-const Keys = () => {
-
+const Keys = (props) => {
+    const { selectedNumbers,selectedOperator } = props;
     return (
         <div>
-            <NumberPad/>
-            <OperatorPad/>
+            <NumberPad selectedNumbers={selectedNumbers} />
+            <OperatorPad  selectedOperator={selectedOperator}/>
         </div>
     )
 }
 
-const NumberPad = () => {
+const NumberPad = (props) => {
 
     return (
         numbers.map(number =>
             <div>
-                <button>{number}</button>
+                <button onClick={() => props.selectedNumbers(number)}> {number}</button>
             </div>
         )
     )
 }
 
-const OperatorPad = () => {
+const OperatorPad = (props) => {
 
     return (
         operators.map(operator =>
             <div>
-                <button>{operator}</button>
+                <button onClick={() => props.selectedOperator(operator)}>{operator}</button>
             </div>
         )
     )
